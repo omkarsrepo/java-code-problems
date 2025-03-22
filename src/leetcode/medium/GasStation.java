@@ -44,7 +44,7 @@ public class GasStation {
             totalCost = totalCost + cost[i];
         }
 
-        // TotalGas should always be more than totalCost for circuit to complete
+        // TotalGas should always be more than or equal to totalCost for circuit to complete
         if(totalGas < totalCost) {
             return -1;
         }
