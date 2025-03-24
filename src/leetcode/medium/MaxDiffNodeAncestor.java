@@ -55,11 +55,11 @@ public class MaxDiffNodeAncestor {
     void calculateDiff(TreeNode root, int min, int max) {
         if(root == null) return;
 
-        int currentDifference = Math.max(Math.abs(max - root.val), Math.abs(min - root.val));
-        maxDifference = Math.max(maxDifference, currentDifference);
-
         max = Math.max(max, root.val);
         min = Math.min(min, root.val);
+
+        int currentDifference = Math.max(Math.abs(max - root.val), Math.abs(min - root.val));
+        maxDifference = Math.max(maxDifference, currentDifference);
 
         calculateDiff(root.left, min, max);
         calculateDiff(root.right, min, max);

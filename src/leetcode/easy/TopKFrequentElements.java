@@ -29,6 +29,7 @@ public class TopKFrequentElements {
             mp.put(nums[i], mp.getOrDefault(nums[i], 0) + 1);
         }
 
+        // Using a list of array List since same number can repeat same times, Ex: [1, 1, 1, 2, 2, 2]
         List<Integer>[] freq = new ArrayList[nums.length + 1]; // Consider [1, 1, 1] as nums. Since index starts from zero, so for 'nums.length' size will be 0-2 and not 0-3 hence +1 here.
         for(int i = 0; i < freq.length; i++) {
             freq[i] = new ArrayList<>();
