@@ -1,0 +1,147 @@
+
+Integer i1 = 100;
+Integer i2 = 100;
+Integer i3 = 500;
+Integer i4 = 500;
+
+System.out.println(i1 == i2);
+System.out.println(i3 == i4);
+
+Integer i1 = 100;   // Uses cached object
+Integer i2 = 100;   // Reuses same cached object
+System.out.println(i1 == i2);  // true - same object reference
+
+Same Integer object is referenced for range -128 to 127
+
+Integer i3 = 500;   // Creates new object
+Integer i4 = 500;   // Creates different new object
+System.out.println(i3 == i4);  // false - different object references
+
+New Integer object is created for range above 127
+
+// Correct way to compare Integer values
+System.out.println(i1.equals(i2));  // Always true for equal values
+System.out.println(i3.equals(i4));  // Always true for equal values
+
+--------------------------------------------------------------------------------------------------------
+
+int method() {
+try {
+    return 1;
+} catch(Exception ex){
+	return 2;
+} finally {
+   return 3;
+}
+}
+
+Stack replaces return 1 with return 3 so return 3 will be the output
+
+--------------------------------------------------------------------------------------------------------
+
+public static void main (String[] args) throws java.lang.Exception {
+		String str = "lok";
+		str.concat("p");
+		System.out.print(str); // lok
+}
+
+str.concat("p"); Creates new String. No Exception will be thrown and it executes successfully.
+
+--------------------------------------------------------------------------------------------------------
+
+Cannot modify values in stream of outer variables. You can modify object values or make  Atomic variables.
+
+AtomicInteger count = new AtomicInteger();
+Arrays.stream(arr).forEach(x -> {
+    if (x == 1) {
+        count.incrementAndGet();
+    }
+});
+
+--------------------------------------------------------------------------------------------------------
+        List<Integer> list1 = List.of(71, 21, 34, 89, 56, 28);
+        List<Integer> list2 = List.of(12, 56, 17, 21, 94, 34);
+
+        // Combine both lists
+        Map<Integer, Long> combinedCount = Stream.concat(list1.stream(), list2.stream())
+                .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+
+        // Filter out elements that appear only once (not duplicates)
+        Map<Integer, Long> duplicateCount = combinedCount.entrySet().stream()
+                .filter(entry -> entry.getValue() > 1)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+--------------------------------------------------------------------------------------------------------
+
+int[] a = new int[232]; // valid
+boolean[] b = new boolean[-200]; // invalid Throws NegativeArraySizeException at runtime
+double[] c = new double[3456666663234] //invalid Exceeds Integer.MAX_VALUE (2147483647)
+
+--------------------------------------------------------------------------------------------------------
+class A {
+
+  String a;
+
+  String getA(){
+
+    return a;
+
+  }
+
+}
+
+
+class B extends A{
+
+  String b;
+
+  String getB(){
+
+    return b;
+
+  }
+
+}
+
+main(){
+
+    A a = new B();
+
+    A a1 = new A();
+
+    B b = new A();
+
+    B b1 = new B();
+
+	B bb = (B) a; // Typecasting valid.
+
+	a.getB();
+	a1.getB();
+	b1.getB();
+	b1.getA();
+}
+
+Valid declarations:
+A a = new B(); ✓ Valid (upcasting)
+A a1 = new A(); ✓ Valid (same type)
+B b1 = new B(); ✓ Valid (same type)
+
+Invalid declarations:
+B b = new A(); ✗ Invalid (downcasting without check)
+
+Method calls:
+a.getB(); ✗ Invalid (A reference can't call B-specific methods)
+a1.getB(); ✗ Invalid (A reference can't call B-specific methods)
+b1.getB(); ✓ Valid (B reference can call B methods)
+b1.getA(); ✓ Valid (B inherits A's methods)
+
+--------------------------------------------------------------------------------------------------------
+List<Person> list;
+Map<Department, List<Person>> map = list.stream().collect(Collectors.groupingBy(Person::Department));
+Map<Department, List<Integer>> map = list.stream().collect(Collectors.groupingBy(Person::Department, mapping(Person::getId, toList())));
+Map<Department, Double> map = list.stream().collect(Collectors.groupingBy(Person::Department, averagingDouble(Person::getSalary)));
+Map<Department, Long> map = list.stream().collect(Collectors.groupingBy(Person::Department, counting()));
+
+SELECT d.name, COUNT(e.id) as employeeCount
+    FROM employee e JOIN department d ON e.departmentId = d.id
+    GROUP BY d.name // Select statement should contain group by clause
+--------------------------------------------------------------------------------------------------------
