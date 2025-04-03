@@ -145,3 +145,7 @@ SELECT d.name, COUNT(e.id) as employeeCount
     FROM employee e JOIN department d ON e.departmentId = d.id
     GROUP BY d.name // Select statement should contain group by clause
 --------------------------------------------------------------------------------------------------------
+// Find employee with second-highest salary from employee table
+
+SELECT employeeName FROM employee ORDER BY salary DESC LIMIT 1 OFFSET 1
+--------------------------------------------------------------------------------------------------------

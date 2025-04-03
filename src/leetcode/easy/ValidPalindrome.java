@@ -27,7 +27,7 @@ Since an empty string reads the same forward and backward, it is a palindrome.
 
 public class ValidPalindrome {
     public boolean isPalindrome(String s) {
-        s = s.toLowerCase().replaceAll("[^a-z0-9]]", "");
+        s = s.toLowerCase().replaceAll("[^a-z0-9]", "");
 
         int l = 0;
         int r = s.length() - 1;
