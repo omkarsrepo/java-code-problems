@@ -147,5 +147,5 @@ SELECT d.name, COUNT(e.id) as employeeCount
 --------------------------------------------------------------------------------------------------------
 // Find employee with second-highest salary from employee table
 
-SELECT employeeName FROM employee ORDER BY salary DESC LIMIT 1 OFFSET 1
+SELECT employeeName FROM employee ORDER BY salary DESC LIMIT 2 OFFSET 1
 --------------------------------------------------------------------------------------------------------
