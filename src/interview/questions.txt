@@ -158,3 +158,21 @@ System.out.println(map.size()); // 1
 
 Map uses equals to compare keys. Since str and str2 have the same value, they are considered equal.
 ---------------------------------------------------------------------------------------------------------
+
+method1(’T’, “Hello”); - Error - ’T’ literal not allowed
+
+---------------------------------------------------------------------------------------------------------
+
+Collectors.counting() returns Long since it has wide range than Integer and defined in method signature itself.
+
+---------------------------------------------------------------------------------------------------------
+list:[1,2,3,4,5,6,7,8,9]
+print the list by removing first and last element using java 8
+
+List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9);
+List<Integer> result = list.subList(1, list.size() - 1);
+---------------------------------------------------------------------------------------------------------
+
+map.get(null) - returns null if key is not present in map. It will not throw NullPointerException.
+
+---------------------------------------------------------------------------------------------------------
