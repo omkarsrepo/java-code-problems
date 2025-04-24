@@ -176,3 +176,21 @@ List<Integer> result = list.subList(1, list.size() - 1);
 map.get(null) - returns null if key is not present in map. It will not throw NullPointerException.
 
 ---------------------------------------------------------------------------------------------------------
+List<Employee> list = new ArrayList();
+
+Employee Object Has - id, name, salary
+
+A - salary < 20
+B - salary >= 20 && < 40
+C - salary >= 40
+
+Map<String, List<Employee>> map = list.stream().collect(Collectors.groupingBy(employee -> {
+	if(employee.getSalary() < 20000) {
+		return "A";
+	} else if(employee.getSalary() >= 20000 && employee.getSalary() < 40000) {
+		return "B";
+	} else {
+		return "C";
+	}
+}));
+---------------------------------------------------------------------------------------------------------
