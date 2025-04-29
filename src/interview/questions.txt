@@ -194,3 +194,10 @@ Map<String, List<Employee>> map = list.stream().collect(Collectors.groupingBy(em
 	}
 }));
 ---------------------------------------------------------------------------------------------------------
+String[] input = {"hello", "world"};
+Output: ['h', 'e', 'l', 'l', 'o', 'w', 'o', 'r', 'l', 'd']
+
+List<Character> result = Arrays.stream(input)
+                     .flatMap(s -> s.chars().mapToObj(c -> (char)c))
+                     .collect(Collectors.toList());
+---------------------------------------------------------------------------------------------------------
