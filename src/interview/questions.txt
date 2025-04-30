@@ -201,3 +201,13 @@ List<Character> result = Arrays.stream(input)
                      .flatMap(s -> s.chars().mapToObj(c -> (char)c))
                      .collect(Collectors.toList());
 ---------------------------------------------------------------------------------------------------------
+// Find the second highest salary from employee table
+
+SELECT department.name, MAX(employee.salary) AS maximumSalary, employee.name
+FROM employee
+JOIN department ON department.departmentId = employee.departmentId
+GROUP BY department.name, employee.name
+ORDER BY maximumSalary DESC
+OFFSET 1 ROWS
+LIMIT 2;
+---------------------------------------------------------------------------------------------------------
