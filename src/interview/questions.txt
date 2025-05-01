@@ -211,3 +211,19 @@ ORDER BY maximumSalary DESC
 OFFSET 1 ROWS
 LIMIT 2;
 ---------------------------------------------------------------------------------------------------------
+Caching Wrapper;
+
+Integer	Cached for values -128 to 127
+Long	Cached for values -128 to 127
+Short	Cached for values -128 to 127
+Byte	Cached for all values (-128 to 127 range covers all bytes)
+Character	Cached for values 0 to 127
+Boolean	Cached for true and false
+Float	No caching, new object created every time
+Double	No caching, new object created every time
+
+-Djava.lang.Integer.IntegerCache.high=500 - JVM System Property can be used to increase the cache range
+---------------------------------------------------------------------------------------------------------
+EXPLAIN ANALYZE
+SELECT * FROM film WHERE film_id = 10;
+---------------------------------------------------------------------------------------------------------
