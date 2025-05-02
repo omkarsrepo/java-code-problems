@@ -26,13 +26,13 @@ System.out.println(i3.equals(i4));  // Always true for equal values
 --------------------------------------------------------------------------------------------------------
 
 int method() {
-try {
-    return 1;
-} catch(Exception ex){
-	return 2;
-} finally {
-   return 3;
-}
+    try {
+        return 1;
+    } catch(Exception ex){
+	    return 2;
+    } finally {
+        return 3;
+    }
 }
 
 Stack replaces return 1 with return 3 so return 3 will be the output
@@ -157,6 +157,8 @@ map.put(str2, str2);
 System.out.println(map.size()); // 1
 
 Map uses equals to compare keys. Since str and str2 have the same value, they are considered equal.
+The hashCode() method in Java's String class calculates the hash code based on the content of the string.
+Hashcode is same for both strings.
 ---------------------------------------------------------------------------------------------------------
 
 method1(’T’, “Hello”); - Error - ’T’ literal not allowed
